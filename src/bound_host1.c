@@ -3,7 +3,9 @@
  *
  *       Filename:  bound_host1.c
  *
- *    Description:  udp  
+ *    Description:  udp_host1
+ *					recv message from host2
+ *					  
  *
  *
  *        Version:  1.09

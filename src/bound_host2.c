@@ -3,7 +3,10 @@
  *
  *       Filename:  bound_host2.c
  *
- *    Description:  udp_client
+ *    Description:  udp_host2
+ *					send message to host1
+ *					× udp 有数据边界， 一边sendto 3次
+ *									, 另一边必须 recvfrom 3次
  *
  *        Version:  1.10
  *        Created:  2016年10月17日 23时34分51秒
