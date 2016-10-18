@@ -53,7 +53,7 @@ main ( int argc, char *argv[] )
 		exit(1);
 	}
 
-	fp = fopen("../src/file_sever.c", "rb");		//b 代表二进制文件
+	fp = fopen("/home/clay/workspace/goWithBook/src/file_server.c", "rb");		//b 代表二进制文件
 	serv_sd = socket(PF_INET, SOCK_STREAM, 0);
 
 	memset(&serv_adr, 0, sizeof(serv_adr));
