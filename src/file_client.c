@@ -6,9 +6,12 @@
  *    Description:  half-close
  *    
  *					client端
- *
- *        Version:  1.23
- *        Created:  2016年10月18日 22时05分56秒
+ *					
+ *					+ 环境变量操作函数 ，使得程序可在别的unbuntu主机上运行，
+ *					  存文件的地址不是绝对地址，而是当前PC的环境变量的PATH
+ *					
+ *        Version:  1.23+
+ *        Created:  2016年10月20日 20时07分03秒
  *       Revision:  none
  *       Compiler:  gcc
  *
@@ -39,6 +42,7 @@ main ( int argc, char *argv[] )
 {
 	int sd;
 	FILE *fp;
+	char *home_path;
 
 	char buf[BUF_SIZE];
 	int read_cnt;
@@ -49,7 +53,12 @@ main ( int argc, char *argv[] )
 		exit(1);
 	}
 
-	fp = fopen("/home/clay/receive.dat", "wb");		//fopen 一个新的空的可写入的二进制文件
+	home_path = getenv("HOME");
+//	printf("%s\n",home_path);
+	strcat(home_path, "/receice.dat");
+	printf("文件将存入 %s\n",home_path);
+
+	fp = fopen(home_path, "wb");		//fopen 一个新的空的可写入的二进制文件
 	sd = socket(PF_INET, SOCK_STREAM, 0);
 
 	memset(&serv_adr, 0, sizeof(serv_adr));
