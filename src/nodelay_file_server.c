@@ -47,6 +47,9 @@ main ( int argc, char *argv[] )
 	int read_cnt;
 
 	int opt_val;
+	
+	char *clnt_ip;
+	int clnt_port;
 
 	struct sockaddr_in serv_adr, clnt_adr;
 	socklen_t clnt_adr_sz,
@@ -81,6 +84,11 @@ main ( int argc, char *argv[] )
 	clnt_sd = accept(serv_sd, (struct sockaddr*)&clnt_adr, &clnt_adr_sz);
 	if(clnt_sd == -1)
 		error_handling("accept() error");
+	
+	clnt_ip = inet_ntoa(clnt_adr.sin_addr);
+	clnt_port = ntohs(clnt_adr.sin_port);	
+	printf("client IP: %s \n", clnt_ip);
+	printf("client port: %d \n", clnt_port);
 
 	opt_len = sizeof(opt_val);
 	if(getsockopt(clnt_sd, IPPROTO_TCP, TCP_NODELAY, (void*)&opt_val, &opt_len))
